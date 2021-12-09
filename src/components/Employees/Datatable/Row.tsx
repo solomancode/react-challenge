@@ -10,7 +10,7 @@ export function EmployeeRow({ employee }: Props) {
         <tr>
             <td>{employee.name}</td>
             <td>{employee.country}</td>
-            <td><EditEmployeeState employee={employee} /></td>
+            <td className="no-highlight"><EditEmployeeState employee={employee} /></td>
         </tr>
     )
 }

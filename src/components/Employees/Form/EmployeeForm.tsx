@@ -2,6 +2,7 @@ import { FormEvent } from "react";
 import { useEmployees } from "../../../hooks/useEmployees";
 import { Employee, EmployeeState } from "../../../models/Employee";
 import { EmployeeFormField } from "./EmployeeFormField";
+import { EmployeeFormStyle } from "./EmployeeFormStyle";
 
 export function EmployeeForm() {
     const { postEmployee } = useEmployees();
@@ -21,10 +22,10 @@ export function EmployeeForm() {
         }
     };
     return (
-        <form onSubmit={onCreate}>
+        <EmployeeFormStyle onSubmit={onCreate}>
             <EmployeeFormField name="name" value="" label="Name" />
             <EmployeeFormField name="country" value="" label="Country" />
-            <button>Create</button>
-        </form>
+            <button className="submit">Create</button>
+        </EmployeeFormStyle>
     )
 }

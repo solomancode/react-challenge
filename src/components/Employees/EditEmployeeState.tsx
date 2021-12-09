@@ -1,6 +1,7 @@
 import { useEmployees } from "../../hooks/useEmployees";
 import { Employee, EmployeeState } from "../../models/Employee";
 import { Loading } from "../Loading";
+import { EditEmployeeStateStyle } from "./EditEmployeeStateStyle";
 
 interface Props {
     employee: Employee
@@ -15,7 +16,7 @@ interface EditStateButtonProps {
 function EditStateButton({ value, isSelected, editState }: EditStateButtonProps) {
     return (
         <>
-            <button type='button' onClick={() => editState(value)}>
+            <button className={"state-select" + (isSelected ? ' selected' : ' not-selected')} type='button' onClick={() => editState(value)}>
                 {isSelected ? '⭐' : ''} {EmployeeState[value]}
             </button>
         </>
@@ -29,7 +30,7 @@ export function EditEmployeeState({ employee }: Props) {
         if (state) patchEmployee({ ...employee, state });
     }
     return employees.isLoading ? <Loading /> : (
-        <form >
+        <EditEmployeeStateStyle >
             {Object.keys(EmployeeState).map(key => {
                 const value = parseInt(key);
                 return (
@@ -38,6 +39,6 @@ export function EditEmployeeState({ employee }: Props) {
                         : null
                 )
             })}
-        </form>
+        </EditEmployeeStateStyle>
     )
 }
